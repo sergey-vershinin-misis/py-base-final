@@ -10,8 +10,8 @@ class _StorageEntry:
 
 
 class LRUCache:
-    """LRUCache реализует Last recently used cache фиксированной емкости, позволяющий кэшировать объекты, после чего
-     получать их их кэша по ключу. В случае увеличения количества элементов кэша выше заданной емкости, из кэша удаляется
+    """LRUCache реализует Last recently used cache фиксированной емкости, позволяющий кэшировать объекты и получать
+     их их кэша по ключу. В случае увеличения количества элементов кэша выше заданной емкости, из кэша удаляется
      элемент, к которому не обращались дольше всего.
 
      Для фиксации времени обращения за объектом используется внутренний счетчик обращений к кэшу,
@@ -31,11 +31,10 @@ class LRUCache:
 
         self.__storage = dict()
         self.__capacity = capacity
+        self.__ticker = 0
 
     def __get_ticks(self):
         """Инкрементирует и возвращает значение внутреннего счетчика обращений к кэшу"""
-        if self.__ticker is None:
-            self.__ticker = 0
         self.__ticker += 1
         return self.__ticker
 
@@ -69,14 +68,14 @@ class LRUCache:
     def __repr__(self):
         storage_entry: _StorageEntry
         return "LRU Cache:\n" + '\n'.join(
-            [f'{key} : {storage_entry.value}' for key, storage_entry in self.__storage.items()])
+            [f'{key} : {storage_entry.value}' for key, storage_entry in self.__storage.items()] or ['cache is empty'])
 
     def print_cache(self):
         """Выводит текстовое представление кэша на экран"""
         print(self)
 
     def get(self, key):
-        """Возвращает объект, хранящийся в кэшн по ключу key. Либо None, если объекта в кэше нет"""
+        """Возвращает объект, хранящийся в кэше по ключу key. Либо None, если объекта в кэше нет"""
         storage_entry: _StorageEntry = self.__storage.get(key)
         if storage_entry is not None:
             storage_entry.last_used = self.__get_ticks()
