@@ -1,4 +1,5 @@
 from task01.task01_demo import demo_task01
+from task02.task02_demo import demo_task02
 
 """
 Каждое задание находится в отдельном py-файле с именем task_<номер задания>.py Задание запускается соответствующим 
@@ -7,7 +8,7 @@ run-методом. Имена таких методов содержатся в
 """
 
 if __name__ == '__main__':
-    demo_task01()
-    # run_task_02()
+    # demo_task01()
+    demo_task02()
     # run_task_03()
     # run_task_04()
