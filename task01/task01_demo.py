@@ -6,33 +6,47 @@ from task01.task_manager import TaskManager
 
 
 def demo_task01():
-    # st = Stack()
-    # st.push(2)
-    # st.push(3)
-    # st.push(4)
-    # print('peek:', st.peek())
-    # print(st.length())
-    # print(st)
-    # st.push(5)
-    # print(st)
-    # st.pop()
-    # print(st)
+    """Демонстрирует простой сценарий работы стека и менеджера задач, реализованные в рамках первого задания ДЗ """
+    demo_stack()
+    demo_task_manager()
 
+
+def demo_stack():
+    print('\n-------------Демонстрация работы стека ------------------')
+    st = Stack()
+    print('1. Создаем пустой стек и выводим его на экран: ', st)
+    st.push(2)
+    st.push(3)
+    st.push(4)
+    print('2. С помощью метода push поочередно добавляем в стек элементы 2, 3 и 4 и снова выводим его: ', st)
+    print('3. Выводим элемент в вершине стека, не удаляя его, с помощью метода peek:', st.peek())
+    print('   Удостоверяемся, что содержимое стека не поменялось: ', st)
+    print('   Количество элементов в стеке: ', st.length())
+    print('4. Забираемы элемент из вершины стека с помощью метода pop и выводим его на печать:', st.pop())
+    print('   Удостоверяемся, что в стеке осталось только два элемента: ', st)
+    print('5. Проверяем, что стек итерируемый, создав на его основе кортеж и выведя его на печать', tuple(st))
+
+
+def demo_task_manager():
+    print('\n-------------Демонстрация работы менеджера задач ----------------')
     manager = TaskManager()
-    manager.add_task('Составить список задач', 2)
-    manager.add_task('Вывести список задач', 3)
-    manager.add_task('Проверить вывод списка', 2)
-    manager.add_task('Проанализировать список задач', 1)
+    print('1. Создаем новый менеджер и выводим его на экран: ', manager)
+
+    manager.add_task('сделать уборку', 4)
+    manager.add_task('помыть посуду', 4)
+    manager.add_task('отдохнуть', 1)
+    manager.add_task('поесть', 2)
+    manager.add_task('сдать дз', 2)
+    print('2. Добавляем в менеджер 5 новых задач и выводим: \n  ', manager.__repr__().replace("\n", "\n   "))
+
+    print('3. Пробуем повторно добавить в менеджер задачу "поесть" и ловим ошибку, выводя ее текст: ')
     try:
-        manager.add_task('Проанализировать список задач', 1)
+        manager.add_task('поесть', 1)
     except ValueError as err:
         print(err)
 
-    print(manager)
-
-    print(manager.contains_task('Составить список задач'))
+    print('4. Проверяем, содержит ли менеджер задачу, используя метод contains_task: ', manager.contains_task('поесть'))
 
     manager.remove_task('Составить список задач')
-    print(manager)
-
-    print(manager.contains_task('Составить список задач'))
+    print('5. Удаляем из менеджера задачу "поесть" и снова выводим список задач на экран:\n  ',
+          manager.__repr__().replace("\n", "\n   "))

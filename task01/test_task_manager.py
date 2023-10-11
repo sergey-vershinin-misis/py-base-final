@@ -48,5 +48,5 @@ class TestTaskManager(TestCase):
         manager.add_task("n3", 1)
         manager.add_task("n4", 3)
 
-        self.assertEqual(manager.__repr__(), "1 n3\n2 n1, n2\n3 n4", 'Текстовое представление менеджера не совпадает '
-                                                                     'с ожидаемым')
+        self.assertEqual(manager.__repr__(), "1 n3\n2 n1, n2\n3 n4",
+                         'Текстовое представление менеджера не совпадает с ожидаемым')
