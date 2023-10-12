@@ -15,8 +15,6 @@ def cache(verbose: bool = False):
 
         if func.__name__ not in cached_values:
             cached_values[func.__name__] = {}
-            if verbose:
-                print('   Создание словаря для кэширования значений функции ', func.__name__)
         func_cached_values = cached_values[func.__name__]
 
         def cached_wrapper(*args, **kwargs):
