@@ -1,7 +1,8 @@
 """
 Задание 3. Кэширование результатов вызова рекурсивной функции
 """
-from task03.cached_fibonacci import fibonacci, factorial
+from task03.factorial import factorial
+from task03.fibonacci import fibonacci
 
 
 def demo_task03():
